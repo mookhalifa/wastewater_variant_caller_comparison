@@ -21,13 +21,14 @@ Set up of the tools was followed as per the tools documentions, in dedicated con
 | Quasimodo | https://github.com/hzi-bifo/Quasimodo | |
 | Varscan |https://github.com/dkoboldt/varscan | |
 
-## Analysis
+## Analysis Outline
 
 - [x] Variant calling
 - [x] Quasimodo 
 - [x] R scripts for enumerating stats into summary files
 - [x] Plotting of figures
 
+Example files are found in the test_example directory.
 
 
 ## References
@@ -36,9 +37,4 @@ Set up of the tools was followed as per the tools documentions, in dedicated con
 
 [//]:freebayes paper
 
-s
-* * *
-s
-* * * 
-* s
-s
+
