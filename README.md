@@ -30,14 +30,11 @@ Set up of the tools was followed as per the tools documentions, in dedicated con
 
 Example files are found in the test_example directory.
 
+The main starting point is the vccf_processing directory. This contains all commands needed to generate the vcf files and other ouptuts from a bam file and the associated reference fasta.
+
 ## References
 
 Deng ZL, Dhingra A, Fritz A, Götting J, Münch PC, Steinbrück L, Schulz T, Ganzenmueller T, McHardy AC. Evaluating assembly and variant calling software for strain-resolved analysis of large DNA-viruses. Briefings in Bioinformatics. 2020:7. https://doi.org/10.1093/bib/bbaa123
 
-*
-*
-`http://arxiv.org/abs/1207.3907`
-
-[//]:freebayes paper
 
 
