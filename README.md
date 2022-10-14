@@ -13,13 +13,13 @@ Set up of the tools was followed as per the tools documentions, in dedicated con
 
 | Tool Name | Link | Version |
 |---|---|---|
-| BCFtools | https://github.com/samtools/bcftools |  |
-| FreeBayes | https://github.com/freebayes/freebayes| |
-| GATK | https://github.com/broadinstitute/gatk ||
-| iVar | https://github.com/andersen-lab/ivar| |
-| LoFreq | https://github.com/CSB5/lofreq | |
-| Quasimodo | https://github.com/hzi-bifo/Quasimodo | |
-| Varscan |https://github.com/dkoboldt/varscan | |
+| BCFtools | https://github.com/samtools/bcftools | 1.13 |
+| FreeBayes | https://github.com/freebayes/freebayes|0.9.21 |
+| GATK | https://github.com/broadinstitute/gatk |3.8|
+| iVar | https://github.com/andersen-lab/ivar| 1.3.1|
+| LoFreq | https://github.com/CSB5/lofreq | 2.1.3.1|
+| Quasimodo | https://github.com/hzi-bifo/Quasimodo |0.4.2 |
+| Varscan |https://github.com/dkoboldt/varscan |2.4.4 |
 
 ## Analysis Outline
 
@@ -29,7 +29,6 @@ Set up of the tools was followed as per the tools documentions, in dedicated con
 - [x] Plotting of figures
 
 Example files are found in the test_example directory.
-
 
 ## References
 
