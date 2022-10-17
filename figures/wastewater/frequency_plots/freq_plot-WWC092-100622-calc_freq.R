@@ -10,9 +10,10 @@ library(gridExtra)
 library(tidyr)
 library(ggrepel)
 
-freq_data <- read.table("WWC092_ALL_vcfs_final.txt", sep='\t', strip.white = TRUE, fill = TRUE)
+setwd("../variant_caller_paper/freq_plot/")
+{freq_data <- read.table("WWC092_ALL_vcfs_final.txt", sep='\t', strip.white = TRUE, fill = TRUE)
 freq_data_group <- freq_data %>% mutate(group = cumsum(V1 =="Name"))
-head(freq_data_group)
+#head(freq_data_group)
 
 File_name_list <- freq_data_group %>% filter(V1=="Name")
 File_name_list <- subset(File_name_list, select=-c(V1))
@@ -23,15 +24,15 @@ File_name_list <- subset(File_name_list, select=-c(V1))
 # temp2 <- freq_data_group %>% mutate(File_Name = if_else(group == File_name_list$group), File_name_list$File_Name)
 
 freq_data_group_2 <- left_join(freq_data_group, File_name_list, by='group')
-head(freq_data_group_2)
+#head(freq_data_group_2)
 
 names(freq_data_group_2)[1] <- "POS"
 names(freq_data_group_2)[2] <- "Frequency"
 names(freq_data_group_2)[4] <- "sample"
-head(freq_data_group_2)
+#head(freq_data_group_2)
 
 freq_data_group_3 <- freq_data_group_2 %>% filter(POS!="Name")
-head(freq_data_group_3)
+#head(freq_data_group_3)
 
 freq_data_group_3[, 'caller'] <- NA
 freq_data_group_3[, 'samp_code'] <- NA
@@ -55,7 +56,7 @@ temp17 <- temp16 %>% mutate(samp_code = ifelse(str_detect(sample,"S278"), "S278"
 temp18 <- temp17 %>% mutate(samp_code = ifelse(str_detect(sample,"S302"), "S302", samp_code))
 temp19 <- temp18 %>% mutate(samp_code = ifelse(str_detect(sample,"S305"), "S305", samp_code))
 freq_data_group_4 <- temp19 %>% mutate(samp_code = ifelse(str_detect(sample,"S63"), "S63", samp_code))
-head(freq_data_group_4)
+#head(freq_data_group_4)
 
 ww_code <- fread("ww_code.txt", header=TRUE)
 
@@ -66,11 +67,11 @@ freq_data_group_4 <- left_join(freq_data_group_4, ww_code, by='samp_code')
 freq_data_group_4[, 'samp_desc'] <- NA
 
 freq_data_group_4$samp_desc <- str_c(freq_data_group_4$samp_code, '_', freq_data_group_4$caller)
-head(freq_data_group_4)
+#head(freq_data_group_4)
 
 freq_data_group_42 <- freq_data_group_4 %>% group_by(samp_desc) %>% summarise(sample=sample, samp_code=samp_code, caller=caller, Wastewater=Wastewater, group=group, samp_desc=samp_desc, Avg_Freq = mean(as.numeric(Frequency)))
-head(freq_data_group_42)
-write.csv(freq_data_group_42, file="WWC092_samp_code_mean_frequency.txt")
+#head(freq_data_group_42)
+#write.csv(freq_data_group_42, file="WWC092_samp_code_mean_frequency.txt")
 
 
 BA1_aa <- fread("OmicronBA1_aa_change.txt", header=TRUE)
@@ -95,7 +96,7 @@ temp21 <- freq_data_group_8 %>% filter(POS %in% BA2_aa$POS)
 
 freq_data_group_9 <- left_join(freq_data_group_6, delta_aa, by='POS')
 temp22 <- freq_data_group_9 %>% filter(POS %in% delta_aa$POS)
-
+}
 
 point_plot <- ggplot(temp20, aes(x=factor(samp_code, level =c("S59","S42","S63","S50","S58","S43","S296","S263","S302","S292","S278","S305","S270")), y=factor(AA_change,level=c("K38R","5386_syn","A1892T","I189V","13195_syn","I42V","S373P","G446S","G496S","T547K","N679K","N856K","N969K","L981F","D3G","Q19E","27259_syn")),color=as.numeric(Frequency)))+ 
   geom_point(size=2) + scale_y_discrete(drop=FALSE) +
