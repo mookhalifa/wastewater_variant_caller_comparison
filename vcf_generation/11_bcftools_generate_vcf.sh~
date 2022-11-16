@@ -1,0 +1,60 @@
+#! /usr/bin/env bash
+
+#while getopts ":a:" opt; do
+#  case $opt in
+#    a)
+#      echo "-a was triggered, Parameter: $OPTARG" >&2
+#      ;;
+#    \?)
+#      echo "Invalid option: -$OPTARG" >&2
+#      exit 1
+#      ;;
+#    :)
+#      echo "Option -$OPTARG requires an argument." >&2
+#      exit 1
+#      ;;
+#  esac
+#done
+
+#!/bin/bash
+
+usage() { echo "Usage: $0 [-r reference fasta] [-b input bam file]" 1>&2; exit 1; }
+
+while getopts "h:r:b:" o; do
+    case "${o}" in
+        r)
+            r=${OPTARG}
+#            ((s == 45 || s == 90)) || usage
+            ;;
+        b)
+            b=${OPTARG}
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [ -z "${r}" ] || [ -z "${b}" ]; then
+    usage
+fi
+
+echo "r = ${r}"
+echo "b = ${b}"
+
+
+echo -e $1
+echo -e $a
+echo $OPTARG
+
+echo $b | sed 's/\(.*\)\/\(.*\)\.\(.*\)$/\2\n\3\n\1/'  # sed '\.\(.*\)$'
+
+output_name=$(echo $b | sed 's/\(.*\)\/\(.*\)\.\(.*\)$/\2\n/').bcf
+# bcftools mpileup -Ou -f ${r} ${b} | bcftools call -mv -Ob -o .bcf
+
+# bcftools convert -O v -o sample1.vcf sample1.bcf
+
+echo "noooo"
+
+echo $output_name
